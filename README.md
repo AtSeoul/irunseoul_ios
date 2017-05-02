@@ -42,3 +42,4 @@ Detail Event
 #### Contributors
 
 - [Sujin Lee](https://github.com/sujinleeme)
+- [KoreaMarathonAPI](https://github.com/sujinleeme/KoreaMarathonAPI) made by Sujin Lee
