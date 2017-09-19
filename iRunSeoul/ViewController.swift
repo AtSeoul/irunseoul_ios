@@ -12,7 +12,7 @@ import Firebase
 class ViewController: UIViewController {
     
     let MARATHON_EVENT_DATABASE = "event"
-    var firebaseRef:FIRDatabaseReference!
+    var firebaseRef:DatabaseReference!
     
 
     override func viewDidLoad() {
@@ -23,8 +23,8 @@ class ViewController: UIViewController {
 
     func setupFirebase() {
         
-        FIRDatabase.database().persistenceEnabled = true
-        firebaseRef = FIRDatabase.database().reference(withPath: MARATHON_EVENT_DATABASE)
+        Database.database().isPersistenceEnabled = true
+        firebaseRef = Database.database().reference(withPath: MARATHON_EVENT_DATABASE)
         
         let query = firebaseRef.child("2017").queryOrdered(byChild: "date").queryLimited(toLast: 20).queryStarting(atValue: "2017/03/15 08:00")
 

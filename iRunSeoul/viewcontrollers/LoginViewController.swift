@@ -18,13 +18,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         setupUI()
     }
 
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
             HUD.show(.progress)
             
-            FIRAuth.auth()?.signIn(withEmail: user_email, password: password) { (user, error) in
+            Auth.auth().signIn(withEmail: user_email, password: password) { (user, error) in
                 
                 guard let user = user, error == nil else {
                     print("error : \(error!.localizedDescription)")
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func resetPassword() {
     
-        FIRAuth.auth()?.sendPasswordReset(withEmail: "") { (error) in
+        Auth.auth().sendPasswordReset(withEmail: "") { (error) in
             
                 if let error = error {
                     self.showLoginAlert(message: error.localizedDescription)

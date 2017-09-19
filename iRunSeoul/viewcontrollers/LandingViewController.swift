@@ -11,7 +11,7 @@ import Firebase
 
 class LandingViewController: UIViewController {
     
-    var handle: FIRAuthStateDidChangeListenerHandle?
+    var handle: AuthStateDidChangeListenerHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class LandingViewController: UIViewController {
         
         setUI()
 
-        handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
+        handle = Auth.auth().addStateDidChangeListener() { (auth, user) in
             
             print("FIRAuth | changelistener")
             if let user = user {
@@ -39,7 +39,7 @@ class LandingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     func setUI() {

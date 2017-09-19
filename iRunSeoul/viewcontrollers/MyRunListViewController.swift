@@ -11,7 +11,7 @@ import Firebase
 
 class MyRunListViewController: MyRunBaseViewController {
 
-    override func getQuery() -> FIRDatabaseQuery {
+    override func getQuery() -> DatabaseQuery {
         
         let myRunsQuery = (ref?.child("user-runs").child(getUid()).queryLimited(toFirst: 100))!
         return myRunsQuery

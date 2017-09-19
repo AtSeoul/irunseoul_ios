@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Use Firebase library to configure APIs
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         GMSServices.provideAPIKey("AIzaSyBPXuCBvM6sBNusdIMwSYAyLdCa4fyW1vI")
         
-         if FIRAuth.auth()?.currentUser != nil {
+         if Auth.auth().currentUser != nil {
             
             let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homeViewController = mainStoryBoard.instantiateViewController(withIdentifier: "maintabbarvc") as! MainTabBarViewController

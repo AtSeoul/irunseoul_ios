@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
 
         
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
         
             self.nameLabel.text = user.displayName!
             
@@ -56,9 +56,9 @@ class ProfileViewController: UIViewController {
 
     func signout() {
     
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth?.signOut()
+            try firebaseAuth.signOut()
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

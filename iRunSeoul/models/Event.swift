@@ -52,7 +52,7 @@ class Event: NSObject {
         self.event_description = event_description
     }
     
-    init?(snapshot: FIRDataSnapshot) {
+    init?(snapshot: DataSnapshot) {
         
         guard let dict = snapshot.value as? [String: AnyObject] else { return nil }
         guard let title = dict["title"] else { return nil }

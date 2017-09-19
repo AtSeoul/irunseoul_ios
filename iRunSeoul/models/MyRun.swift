@@ -67,7 +67,7 @@ class MyRun: NSObject {
         self.photo_url = photo_url
     }
     
-    init?(snapshot: FIRDataSnapshot) {
+    init?(snapshot: DataSnapshot) {
         
         guard let dict = snapshot.value as? [String: AnyObject] else { return nil }
         guard let uid = dict["uid"] else { return nil }

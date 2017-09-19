@@ -44,7 +44,7 @@ class EventViewController: UIViewController, SFSafariViewControllerDelegate {
     var event: Event?
     let zoomLevel: Float = 13.0
     var safariViewController: SFSafariViewController? = nil
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     weak var delegate:EventViewControllerDelegate?
     
@@ -52,7 +52,7 @@ class EventViewController: UIViewController, SFSafariViewControllerDelegate {
         super.viewDidLoad()
 
         Strava.isDebugging = true
-        self.ref = FIRDatabase.database().reference()
+        self.ref = Database.database().reference()
         setUI()
         setMap()
         
@@ -286,7 +286,7 @@ class EventViewController: UIViewController, SFSafariViewControllerDelegate {
                     
                         print("got activity : \(activity)")
                         
-                        let userID = FIRAuth.auth()?.currentUser?.uid
+                        let userID = Auth.auth().currentUser?.uid
                         self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
 
                             self.ref.child("user-runs").child(userID!).queryOrdered(byChild: "run_id").queryEqual(toValue: "\(activity.activityId)").observeSingleEvent(of: .value, with: { (snapshot) in

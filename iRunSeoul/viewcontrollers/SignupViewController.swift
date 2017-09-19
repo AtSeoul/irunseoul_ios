@@ -19,12 +19,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var signupButton: UIButton!
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         setupUI()
     }
     
@@ -42,7 +42,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             
             HUD.show(.progress)
             
-            FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                 
                 if let error = error {
                  
@@ -55,7 +55,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 }
                 
                 print("\(user!.email!) created")
-                let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.displayName = display_name
                 changeRequest?.commitChanges() { (error) in
                     

@@ -14,7 +14,7 @@ import PKHUD
 
 class MyRunBaseViewController: UIViewController, UITableViewDelegate {
     
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +30,7 @@ class MyRunBaseViewController: UIViewController, UITableViewDelegate {
         
         tableView.delegate = self
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         fetchMyRuns()
         
@@ -97,10 +97,10 @@ class MyRunBaseViewController: UIViewController, UITableViewDelegate {
     
     
     func getUid() -> String {
-        return (FIRAuth.auth()?.currentUser?.uid)!
+        return (Auth.auth().currentUser?.uid)!
     }
     
-    func getQuery() -> FIRDatabaseQuery {
+    func getQuery() -> DatabaseQuery {
         return self.ref
     }
     

@@ -13,7 +13,7 @@ import Firebase
 class RecentMarathonsViewController: MarathonListViewController {
     
     
-    override func getQuery() -> FIRDatabaseQuery {
+    override func getQuery() -> DatabaseQuery {
 
         var date = Date()
         let calendar = Calendar.current
